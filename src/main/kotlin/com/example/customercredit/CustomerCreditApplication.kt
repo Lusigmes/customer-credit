@@ -1,4 +1,4 @@
-git apackage com.example.customercredit
+package com.example.customercredit
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
