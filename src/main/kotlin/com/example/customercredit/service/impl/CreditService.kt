@@ -13,7 +13,8 @@ class CreditService(private val creditRepository: CreditRepository,
     override fun save(credit: Credit): Credit {
         credit.apply {
             customer = customerService.findById(credit.customer?.id!!)
-        }//pega o atributo cliente dentro da classe credito,
+        }
+        //pega o atributo cliente dentro da classe credito,
         // no customerService chama o findById e verifica se o id não é nulo
         return this.creditRepository.save(credit)
     }

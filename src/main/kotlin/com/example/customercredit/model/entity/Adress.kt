@@ -9,7 +9,7 @@ data class Adress(
         @NotNull @Column(nullable = false)
         var street: String = "",
         @NotNull @Column(nullable = false)
-        val zipCode: String = ""
+        var zipCode: String = ""
 )
 
 

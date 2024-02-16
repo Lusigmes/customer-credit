@@ -3,8 +3,8 @@ package com.example.customercredit.model.entity
 import com.example.customercredit.model.enums.Status
 import jakarta.persistence.*
 import lombok.AllArgsConstructor
+import lombok.Data
 import lombok.NoArgsConstructor
-import org.jetbrains.annotations.NotNull
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.*
@@ -12,6 +12,7 @@ import java.util.*
 
 @Entity
 @Table(name="credit")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 data class Credit(
@@ -25,14 +26,18 @@ data class Credit(
         var creditValue: BigDecimal = BigDecimal.ZERO,
 
         @Column(nullable = false)
-        var dayFirstInstallment: LocalDate,//var dayFirstInstallment: LocalDate = LocalDate.now(),
-
+        var dayFirstInstallment: LocalDate,
+//var dayFirstInstallment: LocalDate = LocalDate.now()
         @Column(nullable = false)
         var numberOfInstallments: Int = 0,
 
         @Enumerated(EnumType.STRING) @Column(nullable = false)
         var status: Status = Status.IN_PROGRESS,
 
-        @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "customer_id")
+        @ManyToOne @JoinColumn(name = "customer_id")
         var customer: Customer? = null
-)
+){
+        override fun toString(): String {
+                return "Credit(id=$id, creditCode=$creditCode, creditValue=$creditValue, dayFirstInstallment=$dayFirstInstallment, numberOfInstallments=$numberOfInstallments, status=$status)"
+        }
+}
