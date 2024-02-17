@@ -5,6 +5,7 @@ import com.example.customercredit.model.entity.Credit
 import com.example.customercredit.projections.CreditListProjection
 import com.example.customercredit.projections.CreditProjection
 import com.example.customercredit.service.impl.CreditService
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -23,7 +24,7 @@ import java.util.stream.Collectors
 class CreditController(private val creditService: CreditService) {
 
     @PostMapping
-    fun save(@RequestBody creditDTO: CreditDTO): ResponseEntity<String> {
+    fun save(@RequestBody @Valid creditDTO: CreditDTO): ResponseEntity<String> {
         val creditSave: Credit = this.creditService.save(creditDTO.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Credit $creditSave - by customer: ${creditSave.customer?.firstName} saved.")

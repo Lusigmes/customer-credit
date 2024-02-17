@@ -4,7 +4,6 @@ import jakarta.persistence.*
 import lombok.AllArgsConstructor
 import lombok.Data
 import lombok.NoArgsConstructor
-import org.jetbrains.annotations.NotNull
 import java.math.BigDecimal
 
 @Entity
@@ -16,22 +15,22 @@ data class Customer(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long? = null,
 
-        @NotNull @Column(nullable = false)
+        @Column(nullable = false)
         var firstName: String = "",
 
-        @NotNull @Column(nullable = false)
+        @Column(nullable = false)
         var lastName: String = "",
 
-        @NotNull @Column(nullable = false, unique = true)
+        @Column(nullable = false, unique = true)
         var cpf: String = "",
 
-        @NotNull @Column(nullable = false, unique = true)
+        @Column(nullable = false, unique = true)
         var email: String = "",
 
-        @NotNull @Column(nullable = false)
+        @Column(nullable = false)
         var password: String = "",
 
-        @NotNull @Column(nullable = false) @Embedded
+        @Column(nullable = false) @Embedded
         var adress: Adress = Adress(),
 
         @Column(nullable = false)
