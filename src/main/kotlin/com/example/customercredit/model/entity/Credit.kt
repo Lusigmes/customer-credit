@@ -7,6 +7,7 @@ import lombok.Data
 import lombok.NoArgsConstructor
 import java.math.BigDecimal
 import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 import java.util.*
 
 
@@ -27,7 +28,7 @@ data class Credit(
 
         @Column(nullable = false)
         var dayFirstInstallment: LocalDate,
-//var dayFirstInstallment: LocalDate = LocalDate.now()
+
         @Column(nullable = false)
         var numberOfInstallments: Int = 0,
 
@@ -37,6 +38,14 @@ data class Credit(
         @ManyToOne @JoinColumn(name = "customer_id")
         var customer: Customer? = null
 ){
+        companion object{
+                private const val MAX_FIRST_INSTALLMENT_MONTHS = 3L
+        }init {
+
+                require(LocalDate.now().until(dayFirstInstallment, ChronoUnit.MONTHS) <= MAX_FIRST_INSTALLMENT_MONTHS) {
+                        "First installment date must be within 3 months from today"
+                }
+        }
         override fun toString(): String {
                 return "Credit(id=$id, creditCode=$creditCode, creditValue=$creditValue, dayFirstInstallment=$dayFirstInstallment, numberOfInstallments=$numberOfInstallments, status=$status)"
         }

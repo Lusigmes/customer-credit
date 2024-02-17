@@ -1,7 +1,6 @@
 package com.example.customercredit.service
 
 import com.example.customercredit.model.entity.Customer
-import org.springframework.stereotype.Service
 
 
 interface ICustomerService {

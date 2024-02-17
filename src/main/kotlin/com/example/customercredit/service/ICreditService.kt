@@ -1,7 +1,6 @@
 package com.example.customercredit.service
 
 import com.example.customercredit.model.entity.Credit
-import org.springframework.stereotype.Service
 import java.util.UUID
 
 
