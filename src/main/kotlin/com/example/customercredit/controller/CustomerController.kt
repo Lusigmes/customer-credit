@@ -38,7 +38,7 @@ class CustomerController(private val customerService: CustomerService) {
     @DeleteMapping("/{customerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun delete(@PathVariable customerId: Long) = this.customerService.delete(customerId)
-    
+
     @PatchMapping
     fun update(@RequestParam(value = "customerId") customerId: Long,
                @RequestBody @Valid customerUpdateDTO: CustomerUpdateDTO): ResponseEntity<CustomerProjection>{
