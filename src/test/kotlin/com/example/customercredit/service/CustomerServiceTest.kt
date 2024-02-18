@@ -19,7 +19,7 @@ import org.springframework.test.context.ActiveProfiles
 import java.math.BigDecimal
 import java.util.Optional
 import java.util.Random
-
+//do creditServiceTest
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension::class)//MockKExtension::class
 class CustomerServiceTest {
@@ -78,7 +78,7 @@ class CustomerServiceTest {
         verify(customerRepository, times(1)).delete(fakeCustomer)//verify(exactly = 1) { customerRepository.delete(fakeCustomer) }
     }
     companion object{
-        private fun buildCustomer(
+         fun buildCustomer(
             firstName: String ="Luis",
             lastName: String = "Gomes",
             cpf: String = "41676492178",

@@ -22,7 +22,7 @@ fun handlerValidException(ex: MethodArgumentNotValidException): ResponseEntity<E
     }
     return ResponseEntity(
             ExceptionDetails(
-                    title = "Bad Request! Not empty values",
+                    title = "Bad Request! Error",
                     timestamp = LocalDateTime.now(),
                     status = HttpStatus.BAD_REQUEST.value(),
                     exception = ex.javaClass.toString(),
@@ -52,7 +52,7 @@ fun handlerValidException(ex: MethodArgumentNotValidException): ResponseEntity<E
     fun handlerValidException(ex: BusinessException): ResponseEntity<ExceptionDetails> {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
                 ExceptionDetails(
-                        title = "Bad Request! id not found",
+                        title = "Bad Request! Error",
                         timestamp = LocalDateTime.now(),
                         status = HttpStatus.BAD_REQUEST.value(),
                         exception = ex.javaClass.toString(),
@@ -65,7 +65,7 @@ fun handlerValidException(ex: MethodArgumentNotValidException): ResponseEntity<E
     fun handlerValidException(ex: IllegalArgumentException): ResponseEntity<ExceptionDetails> {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
                 ExceptionDetails(
-                        title = "Bad Request! invalid value",
+                        title = "Bad Request! Error",
                         timestamp = LocalDateTime.now(),
                         status = HttpStatus.BAD_REQUEST.value(),
                         exception = ex.javaClass.toString(),
