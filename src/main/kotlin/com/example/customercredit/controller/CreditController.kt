@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.UUID
 import java.util.stream.Collectors
 
-
 @RestController
 @RequestMapping("/api/credits")
 class CreditController(private val creditService: CreditService) {
@@ -27,7 +26,7 @@ class CreditController(private val creditService: CreditService) {
     fun save(@RequestBody @Valid creditDTO: CreditDTO): ResponseEntity<String> {
         val creditSave: Credit = this.creditService.save(creditDTO.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body("Credit $creditSave - by customer: ${creditSave.customer?.firstName} saved.")
+                .body("Credit ${creditSave.creditCode} - by customer: ${creditSave.customer?.firstName} saved.")
     }
 
     @GetMapping

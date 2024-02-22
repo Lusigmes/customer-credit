@@ -38,15 +38,5 @@ data class Credit(
         @ManyToOne @JoinColumn(name = "customer_id")
         var customer: Customer? = null
 ){
-        companion object{
-                private const val MAX_FIRST_INSTALLMENT_MONTHS = 3L
-        }init {
 
-                require(LocalDate.now().until(dayFirstInstallment, ChronoUnit.MONTHS) <= MAX_FIRST_INSTALLMENT_MONTHS) {
-                        "First installment date must be within 3 months from today"
-                }
-        }
-        override fun toString(): String {
-                return "Credit(id=$id, creditCode=$creditCode, creditValue=$creditValue, dayFirstInstallment=$dayFirstInstallment, numberOfInstallments=$numberOfInstallments, status=$status)"
-        }
 }

@@ -64,7 +64,7 @@ class CreditRepositoryTest {
         //then
         Assertions.assertThat(creditList).isNotEmpty
         Assertions.assertThat(creditList.size).isEqualTo(2)
-        Assertions.assertThat(creditList).contains(credit1,credit2)
+        Assertions.assertThat(creditList).contains(credit1, credit2)
 
     }
 

@@ -9,7 +9,7 @@ import java.time.LocalDate
 data class CreditProjection(
         var creditValue: BigDecimal,
         var dayFirstInstallment: LocalDate,
-        var numberOfInstallment: Int,
+        var numberOfInstallments: Int,
         var status: Status,
         var emailCustomer: String?,
         var incomeCustomer: BigDecimal?
@@ -17,7 +17,7 @@ data class CreditProjection(
     constructor(credit: Credit): this(
             creditValue = credit.creditValue,
             dayFirstInstallment = credit.dayFirstInstallment,
-            numberOfInstallment = credit.numberOfInstallments,
+            numberOfInstallments = credit.numberOfInstallments,
             status = credit.status,
             emailCustomer = credit.customer?.email,
             incomeCustomer = credit.customer?.income

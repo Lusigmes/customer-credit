@@ -7,8 +7,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource
 import org.springframework.stereotype.Repository
 import java.util.UUID
 
-@RepositoryRestResource(collectionResourceRel = "credits", path = "credits")
 @Repository
+@RepositoryRestResource(collectionResourceRel = "credits", path = "credits")
 interface CreditRepository: JpaRepository<Credit, Long>{
     fun findByCreditCode(creditCode: UUID ): Credit? //função usando o spring data
 

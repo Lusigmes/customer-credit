@@ -14,14 +14,14 @@ data class CreditDTO(
 //cadastrar dados de um emprestimo
         @field:NotNull(message = "Invalid field credit value")  var creditValue: BigDecimal,
         @field:Future var dayFirstInstallment: LocalDate,
-        @field:Max(value = 48, message = "Maximum installments exceeded (48)") var numberOfInstallment: Int,
+        @field:Max(value = 48, message = "Maximum installments exceeded (48)") var numberOfInstallments: Int,
         @field:NotNull(message = "Invalid field customer id") var customerId: Long
 ) {
     companion object{
         private const val MAX_INSTALLMENTS = 48
         private const val MAX_FIRST_INSTALLMENT_MONTHS = 3L
     }init {
-        require(numberOfInstallment <= MAX_INSTALLMENTS) {
+        require(numberOfInstallments <= MAX_INSTALLMENTS) {
             "Maximum installments exceeded (48)"
         }
         require(LocalDate.now().until(dayFirstInstallment, ChronoUnit.MONTHS) <= MAX_FIRST_INSTALLMENT_MONTHS) {
@@ -31,7 +31,7 @@ data class CreditDTO(
     fun toEntity(): Credit = Credit(
             creditValue = this.creditValue,
             dayFirstInstallment = this.dayFirstInstallment,
-            numberOfInstallments = this.numberOfInstallment,
+            numberOfInstallments = this.numberOfInstallments,
             customer = Customer(id = this.customerId)
     )
 }
